@@ -16,6 +16,11 @@ public class DFSWithStack {
 	{ 0 1 4 2 7 }
 	{ 3 5 }
 	{ 6 }
+	1 2
+	1 7
+	2 3
+	3 4
+	4 7
 	*/
 	Scanner in;
 	int n, m;
@@ -32,13 +37,12 @@ public class DFSWithStack {
 			int begin = in.nextInt();
 			int end = in.nextInt();
 			a[begin][end] = a[end][begin] = 1;
-			a[begin][begin]=a[end][end]=1;//防止某些顶点根本不存在
 		}
 	}
 
 	public void DFS() {
 		for (int i = 0; i < n; i++) {
-			if (!visited[i] && a[i][i]==1) {
+			if (!visited[i]) {
 				visited[i] = true;
 				dfsWithStack(i);
 			}
