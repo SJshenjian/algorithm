@@ -1,9 +1,4 @@
 package collection;
-
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
 public class BinaryTreeNode {
 	
 	private Comparable data;
@@ -70,18 +65,6 @@ public class BinaryTreeNode {
 			}
 			return this.getRight().insert(o);
 		}
-	}
-	
-	@Test
-	public static void main(String[] args) {
-		BinaryTreeNode root=new BinaryTreeNode(5);
-		root.insert(2);
-		root.insert(2);
-		root.insert(7);
-		root.insert(1);
-		root.insert(4);
-		root.insert(3);
-		assertEquals(3,root.getLeft().getRight().getLeft().getData());
 	}
 
 	public Object getData() {
