@@ -1,9 +1,9 @@
 package collection;
 
-/*
- * 要求:单向链表实现
- */
-public class LinkedList implements List {
+import java.util.Stack;
+
+
+public class LinkedList implements List{
 	
 	private int size=0;//表示该链表的长度
 	private Node head;//链表的头元素
@@ -135,13 +135,38 @@ public class LinkedList implements List {
 		}
 	}
 	
-	//以下不用实现
 	/**
 	 * 把该链表逆置
 	 * 例如链表为 3->7->10 , 逆置后变为  10->7->3
 	 */
 	public  void reverse(){		
 		
+		if(null == head || null ==head.next)
+			return ;
+		
+		Stack<Node> stack=new Stack<Node>();
+		
+		Node currentNode=head;
+		
+		while(currentNode!=null){
+			
+			stack.push(currentNode);
+			
+			Node tempNode=currentNode.next;
+			currentNode.next=null;//断开连接
+			
+			currentNode=tempNode;
+			
+		}
+		
+		head=stack.pop();
+		currentNode=head;
+		
+		while(!stack.isEmpty()){
+			
+			currentNode.next=stack.pop();
+			currentNode=currentNode.next;	    	
+		}
 	}
 	
 	/**
@@ -151,7 +176,11 @@ public class LinkedList implements List {
 
 	 */
 	public  void removeFirstHalf(){
-		
+
+		int num=size()/2;
+		for(int i=0;i<num;i++){
+			removeFirst();		
+		}
 	}
 	
 	/**
@@ -161,17 +190,62 @@ public class LinkedList implements List {
 	 */
 	public  void remove(int i, int length){
 		
+		if(i <0 || i >= size){
+			throw new IndexOutOfBoundsException();
+		}
+		
+		int len=size()-i>=length ? length:size-i;
+		
+		int k=0;
+		
+		while(k<len){
+			remove(i);
+			k++;
+		}
+		
 	}
 	/**
-	 * 假定当前链表和listB均包含已升序排列的整数
-	 * 从当前链表中取出那些listB所指定的元素
+	 * 假定当前链表和listB排列的整数
+	 * 从当前链表中取出那些listB所指定均包含已升序的元素
 	 * 例如当前链表 = 11->101->201->301->401->501->601->701
 	 * listB = 1->3->4->6
 	 * 返回的结果应该是[101,301,401,601]  
 	 * @param list
 	 */
 	public  int[] getElements(LinkedList list){
-		return null;
+		
+		int[] arr=new int[list.size()];
+		
+		for(int i=0;i<list.size();i++){
+			arr[i]=(int)this.get((int)list.get(i));
+		}
+		return arr;
+	}
+	
+	/**
+	 * 传入数据删除节点
+	 * @param obj
+	 */
+	public void remove(Object obj){
+		if(head==null){
+			throw new RuntimeException("LinkedList is empty!");
+		}
+		//如果要删除的结点是第一个，则把下一个结点赋值给第一个结点
+		if(head.data.equals(obj)){
+			head=head.next;
+			size--;
+		}else{
+			Node pre=head; //上一节点
+			Node cur=head.next; //当前结点
+			while(cur!=null){
+				if(cur.data.equals(obj)){
+					pre.next=cur.next;
+					size--;
+				}
+				pre=pre.next;
+				cur=cur.next;
+			}
+		}
 	}
 	
 	/**
@@ -183,6 +257,9 @@ public class LinkedList implements List {
 	
 	public  void subtract(LinkedList list){
 		
+		for (int i = 0; i < list.size(); i++) {
+			this.remove(list.get(i));
+		}
 	}
 	
 	/**
@@ -191,6 +268,30 @@ public class LinkedList implements List {
 	 */
 	public  void removeDuplicateValues(){
 		
+		if(head == null){
+			throw new RuntimeException("LinkedList is empty!");
+		}
+		
+		Node pre=head;
+		
+		Node cur=head.next;
+	    
+		while(cur!=null){
+			Object dataPre=pre.data;
+			Object dataCur=cur.data;
+			while(dataPre.equals(dataCur)){
+				if(cur.next==null){
+					pre.next=null;
+					break;
+				}
+				pre.next=cur.next;
+				cur=cur.next;
+				dataCur=cur.data;
+				size--;
+			}
+			pre=pre.next;
+			cur=cur.next;
+		}
 	}
 	
 	/**
@@ -201,6 +302,24 @@ public class LinkedList implements List {
 	 */
 	public  void removeRange(int min, int max){
 		
+		if(head==null){
+			return ;
+		}
+		
+		while((int)head.data > min && (int)head.data < max){
+			head=head.next;
+		}
+		
+		Node cur=head;
+		
+		while(cur.next!=null){
+			Node next=cur.next;
+			if( (int)next.data> min  && (int)next.data < max){
+				cur.next=next.next;
+			}else{
+				cur=cur.next;
+			}
+		}
 	}
 	
 	/**
@@ -209,6 +328,36 @@ public class LinkedList implements List {
 	 * @param list
 	 */
 	public  LinkedList intersection( LinkedList list){
-		return null;
+		
+		 LinkedList result=new LinkedList();
+		 Node cur=head;
+		 int i=0;
+		 while(cur!=null && i<list.size()){
+			 if(cur.data.equals(list.get(i))){
+				 result.add(cur.data);
+				 i++;
+				 cur=cur.next;
+			 }else if((int)cur.data>(int)list.get(i)){
+				 i++;
+			 }else{
+				 cur=cur.next;
+			 }
+		 }
+		 return result;
+	}
+	
+	public String toString(){
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("[");
+		Node node = head;
+		while(node != null){
+			buffer.append(node.data);
+			if(node.next != null){
+				buffer.append(",");
+			}
+			node = node.next;
+		}
+		buffer.append("]");
+		return buffer.toString();
 	}
 }
