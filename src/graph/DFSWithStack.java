@@ -1,4 +1,4 @@
-package Graph;
+package graph;
 
 import java.util.Scanner;
 import java.util.Stack;
