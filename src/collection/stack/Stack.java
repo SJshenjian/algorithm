@@ -1,6 +1,8 @@
-package collection;
+package collection.stack;
 
 import java.util.EmptyStackException;
+
+import collection.array.ArrayList;
 
 public class Stack {
 	private ArrayList elementData = new ArrayList();

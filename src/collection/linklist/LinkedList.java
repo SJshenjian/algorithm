@@ -1,6 +1,9 @@
-package collection;
+package collection.linklist;
 
 import java.util.Stack;
+
+import collection.Iterator;
+import collection.List;
 
 
 public class LinkedList implements List{
@@ -30,7 +33,7 @@ public class LinkedList implements List{
 			return ;
 		}
 		
-		ListUtils.checkIndexRange(index, size);
+		checkIndexRange(index, size);
 		
 		if(index==0){
 			Node node=new Node(head.next.data);
@@ -54,7 +57,7 @@ public class LinkedList implements List{
 	
 	public Object get(int index){
 		
-		ListUtils.checkIndexRange(index, size-1);
+		checkIndexRange(index, size-1);
 		
 		Node node=head;
 		for(int i=0;i<index;i++){
@@ -65,7 +68,7 @@ public class LinkedList implements List{
 	
 	public Object remove(int index){
 		
-		ListUtils.checkIndexRange(index, size-1);
+		checkIndexRange(index, size-1);
 		
 		if(index == 0){
 			Node removeNode=head;
@@ -359,5 +362,10 @@ public class LinkedList implements List{
 		}
 		buffer.append("]");
 		return buffer.toString();
+	}
+	
+	private void checkIndexRange(int index, int size) {
+		if (index < 0 || index > size)
+			throw new IndexOutOfBoundsException();
 	}
 }

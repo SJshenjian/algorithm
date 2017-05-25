@@ -1,10 +1,10 @@
-package collection.test;
+package collection.stack.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import collection.Stack;
+import collection.stack.Stack;
 
 public class StackTest {
 

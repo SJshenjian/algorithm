@@ -1,4 +1,6 @@
-package collection;
+package collection.queue;
+
+import collection.linklist.LinkedList;
 
 public class Queue {
 	

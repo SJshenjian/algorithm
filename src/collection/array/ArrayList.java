@@ -1,6 +1,9 @@
-package collection;
+package collection.array;
 
 import java.util.Arrays;
+
+import collection.Iterator;
+import collection.List;
 
 public class ArrayList implements List {
 	
@@ -16,7 +19,7 @@ public class ArrayList implements List {
 
 	public void add(int index, Object o){
 		
-		ListUtils.checkIndexRange(index,size);
+		checkIndexRange(index,size);
 		
 		if(size == elementData.length){
 			elementData = Arrays.copyOf(elementData, elementData.length+50);
@@ -33,14 +36,14 @@ public class ArrayList implements List {
 	
 	public Object get(int index){
 		
-		ListUtils.checkIndexRange(index+1,size);
+		checkIndexRange(index+1,size);
 		
 		return elementData[index];
 	}
 	
 	public Object remove(int index){
 		
-		ListUtils.checkIndexRange(index+1,size);
+		checkIndexRange(index+1,size);
 		
 		Object object=elementData[index];
 		for(int i=index;i<size-1;i++){
@@ -75,5 +78,10 @@ public class ArrayList implements List {
 				return elementData[i];
 			}
 		};
+	}
+	
+	 private void  checkIndexRange(int index, int size) {
+		if (index < 0 || index > size)
+			throw new IndexOutOfBoundsException();
 	}
 }

@@ -1,10 +1,10 @@
-package collection.test;
+package collection.queue.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import collection.Queue;
+import collection.queue.Queue;
 
 public class QueueTest {
 

@@ -1,11 +1,11 @@
 
-package collection.test;
+package collection.array.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import collection.ArrayUtil;
+import collection.array.ArrayUtil;
 
 
 

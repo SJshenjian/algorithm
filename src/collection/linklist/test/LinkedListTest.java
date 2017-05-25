@@ -1,11 +1,11 @@
-package collection.test;
+package collection.linklist.test;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import collection.LinkedList;
+import collection.linklist.LinkedList;
 
 public class LinkedListTest {
 
