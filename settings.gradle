@@ -1,0 +1,3 @@
+rootProject.name = 'algorithm'
+include 'base'
+include 'code'
