@@ -1,36 +1,48 @@
 package string;
 
-/**求最长公共子串大小**/
+import java.util.Scanner;
+
+/**
+ * @author Jian Shen
+ * @version V1.0
+ * @date 2018/10/23
+ * @desc 给出两个字符串（可能包含空格）,找出其中最长的公共连续子串,输出其长度。
+ */
 public class LongestCommonString {
 
 	public static void main(String[] args) {
-		char[] x={'A','B','C','B','D','A','B'};
-		char[] y={'B','D','C','A','B','A'};
-		//预期结果为4	
-		int[][] c=new int[x.length][y.length];
-		
-		for(int i=0;i<x.length;i++){
-			if(x[i] == y[0]){
-				c[i][0]=1;
-			}
+		Scanner scanner = new Scanner(System.in);
+		while(scanner.hasNext()) {
+			String a = scanner.nextLine();
+			String b = scanner.nextLine();
+			int length = count(a, b);
+			System.out.println(length);
 		}
-		
-		for(int i=0;i<y.length;i++){
-			if(y[i] == x[0]){
-				c[0][i]=1;
-			}
+	}
+
+	private static int count(String a, String b) {
+		if (a == null || b == null) {
+			return 0;
 		}
-		
-		for(int i=1;i<x.length;i++){
-			for(int j=1;j<y.length;j++){
-				if(x[i] == y[j]){
-					c[i][j]=c[i-1][j-1]+1;
-				}else{
-					c[i][j]=Math.max(c[i-1][j],c[i][j-1]);
+
+		int[][] dp = new int[a.length()][b.length()];
+		int max = 0;
+
+		for (int i = 0; i < a.length(); i++) {
+			for (int j = 0; j < b.length(); j++) {
+				if (a.charAt(i) == b.charAt(j)) {
+					if (i == 0 || j == 0) {
+						dp[i][j] = 1;
+					} else {
+						dp[i][j] = dp[i - 1][j - 1] + 1;
+					}
+				}
+				if (max < dp[i][j]) {
+					max = dp[i][j];
 				}
 			}
 		}
-		
-		System.out.println("最长的公共子串为:"+c[x.length-1][y.length-1]);
+
+		return max;
 	}
 }
