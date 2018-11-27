@@ -1,10 +1,11 @@
 import java.util.Scanner;
 
 /**
+ * 给出两个字符串（可能包含空格）,找出其中最长的公共连续子串,输出其长度。-- 美团
+ *
  * @author Jian Shen
  * @version V1.0
  * @date 2018/10/23
- * @desc （美团）给出两个字符串（可能包含空格）,找出其中最长的公共连续子串,输出其长度。
  */
 public class LongestCommonString {
 
