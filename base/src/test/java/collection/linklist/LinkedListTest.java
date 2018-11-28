@@ -35,6 +35,40 @@ public class LinkedListTest {
 		Assert.assertEquals("[4,3,2,1]", l.toString());
 	}
 
+	@Test
+	public void testReverseByGroup() {
+		{
+			LinkedList linkedList = new LinkedList();
+			linkedList.add(1);
+			linkedList.add(2);
+			linkedList.add(3);
+			linkedList.add(4);
+			linkedList.add(5);
+			linkedList.reverseByGroup(2);
+			Assert.assertEquals("[2,1,4,3,5]", linkedList.toString());
+		}
+		{
+			LinkedList linkedList = new LinkedList();
+			linkedList.add(1);
+			linkedList.add(2);
+			linkedList.add(3);
+			linkedList.add(4);
+			linkedList.add(5);
+			linkedList.reverseByGroup(6);
+			Assert.assertEquals("[1,2,3,4,5]", linkedList.toString());
+		}
+		{
+			LinkedList linkedList = new LinkedList();
+			linkedList.add(1);
+			linkedList.add(2);
+			linkedList.add(3);
+			linkedList.add(4);
+			linkedList.add(5);
+			linkedList.reverseByGroup(5);
+			Assert.assertEquals("[5,4,3,2,1]", linkedList.toString());
+		}
+	}
+
 	
 	@Test
 	public void testRemoveFirstHalf() {
