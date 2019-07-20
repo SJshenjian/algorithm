@@ -32,9 +32,9 @@ public class SelectSort<T extends Comparable<T>> extends Sort<T> {
     }
 
     public static void main(String[] args) {
-        SelectSort selectSort = new SelectSort();
-        Integer[] array = new Integer[]{2,1,4,6,3,7,3};
-        selectSort.sort(array);
+        Sort sort = new SelectSort();
+        Integer[] array = new Integer[]{2, 1, 4, 6, 3, 7, 3};
+        sort.sort(array);
         System.out.println(Arrays.asList(array));
     }
 }

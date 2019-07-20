@@ -32,9 +32,9 @@ public class BubbleSort<T extends Comparable<T>> extends Sort<T> {
     }
 
     public static void main(String[] args) {
-        BubbleSort selectSort = new BubbleSort();
+        Sort sort = new BubbleSort();
         Integer[] array = new Integer[]{1, 3, 2, 4, 4, 9, 10, 3};
-        selectSort.sort(array);
+        sort.sort(array);
         System.out.println(Arrays.asList(array));
     }
 }
