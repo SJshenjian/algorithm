@@ -69,8 +69,8 @@ public class BucketSort extends Sort<Integer> {
 	
 	public static void main(String[] args) {
 		Sort<Integer> sort = new BucketSort(); 
-	    Integer[] array = new Integer[]{2,1,4,6,3,7,3};
-        sort.sort(array);
-        System.out.println(Arrays.asList(array));
+	    	Integer[] array = new Integer[]{2,1,4,6,3,7,3};
+        	sort.sort(array);
+        	System.out.println(Arrays.asList(array));
 	}
 }
