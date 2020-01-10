@@ -11,9 +11,7 @@ public class SieveOfEratosthenes {
 
     public boolean[] sieve(int max) {
         boolean[] flags = new boolean[max + 1];
-        for (int i = 2; i < flags.length; i++) {
-            flags[i] = true;
-        }
+        Arrays.fill(flags, true);
         int prime = 2;
         while (prime <= Math.sqrt(max)) {
             crossOff(flags, prime);
